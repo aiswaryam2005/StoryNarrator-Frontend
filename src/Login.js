@@ -11,7 +11,7 @@ const Login = ({ onLogin }) => {
    const handleLogin = async (e) => {
       e.preventDefault();
       try {
-         const response = await axios.post("http://localhost:5000/login", { email, password });
+         const response = await axios.post("https://storynarrator-backend.onrender.com/login", { email, password });
          onLogin(response.data.user);
          alert("Login successful");
       } catch (error) {

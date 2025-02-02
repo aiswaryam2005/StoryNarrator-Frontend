@@ -12,7 +12,7 @@ const SignUp = () => {
    const handleSignUp = async (e) => {
       e.preventDefault();
       try {
-         const response = await axios.post("http://localhost:5000/signup", { username, email, password });
+         const response = await axios.post("https://storynarrator-backend.onrender.com/signup", { username, email, password });
          alert(response.data.message);
       } catch (error) {
          setErrorMessage("User already exists. Already have an account? Login!");

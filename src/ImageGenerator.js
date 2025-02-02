@@ -17,7 +17,7 @@ const ImageGenerator = () => {
         setImageUrl(""); // Clear previous image
 
         try {
-            const response = await axios.post("http://localhost:5000/generate-image", { description });
+            const response = await axios.post("https://storynarrator-backend.onrender.com/generate-image", { description });
             setImageUrl(response.data.imageUrl);
         } catch (error) {
             console.error("Error generating image:", error);

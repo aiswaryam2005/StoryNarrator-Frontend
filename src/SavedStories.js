@@ -12,7 +12,7 @@ const SavedStories = ({ user }) => {
     useEffect(() => {
         const fetchStories = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/get-stories?email=${user.email}`);
+                const response = await axios.get(`https://storynarrator-backend.onrender.com/get-stories?email=${user.email}`);
                 setStories(response.data.stories);
             } catch (error) {
                 console.error("Error fetching stories:", error);
@@ -31,7 +31,7 @@ const SavedStories = ({ user }) => {
 
     const handleDeleteStory = async (story) => {
         try {
-            await axios.delete('http://localhost:5000/delete-story', {
+            await axios.delete('https://storynarrator-backend.onrender.com/delete-story', {
                 data: { email: user.email, title: story.title, content: story.content }
             });
             setStories(stories.filter((s) => s.title !== story.title || s.content !== story.content));

@@ -29,7 +29,7 @@ const Home = ({ user }) => {
     useEffect(() => {
         const fetchSavedStories = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/get-stories?email=${user.email}`);
+                const response = await axios.get(`https://storynarrator-backend.onrender.com/get-stories?email=${user.email}`);
                 setSavedStories(response.data.stories);
             } catch (error) {
                 console.error("Error fetching saved stories:", error);
@@ -49,7 +49,7 @@ const Home = ({ user }) => {
         for (const line of lines) {
             if (line.trim()) {
                 try {
-                    const response = await axios.post('http://localhost:5000/generate-image', { description: line });
+                    const response = await axios.post('https://storynarrator-backend.onrender.com/generate-image', { description: line });
                     pairs.push({ line: line.trim(), imageUrl: response.data.imageUrl || '' });
                 } catch (error) {
                     console.error('Error generating image for line:', error);
@@ -132,7 +132,7 @@ const Home = ({ user }) => {
         }
 
         try {
-            const response = await axios.post('http://localhost:5000/save-story', {
+            const response = await axios.post('https://storynarrator-backend.onrender.com/save-story', {
                 email: user.email,
                 title: storyTitle,
                 content: story,
